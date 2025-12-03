@@ -1,6 +1,5 @@
 body{
     background: #dde2e6;
-    
     font-family: 'Times New Roman', Times, serif;
     font-size: medium;
     justify-content: center;
@@ -10,29 +9,65 @@ body{
     margin: 1%
     
 }
-.card{
-    background: #fff;
-    text-align: centre;
-    padding: 10px;
-    box-shadow: 0,8px,rgb(red, green, blue);
-    border-radius: 5%;
+.card {
+    position: relative;
     width: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    overflow: hidden;       /* IMPORTANT — keeps blur inside the card */
+    background-color: rgba(255,255,255,0.4);
+    backdrop-filter: blur(2px);
+}
+
+
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("cake.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px); /* SLIGHT blur */
+    opacity: 0.9; /* keep image clear but soft */
+    transform: scale(1.10); /* avoid edge cut */
+    z-index: 1;
+}
+
+.card * {
+    position: relative;
+    z-index: 2;
+}
+
+
+@keyframes moveBox {
+    from { transform: translateX(2px); }
+    to { transform: translateX(20px); }
 }
 .card h1{
-    color: red;
-    text-shadow: 3px 3px 6px rgb(2, 1, 22);
+    color:#8B0000;
+    font-weight: 900;
+    font-size: 50px;
+   text-shadow:
+        0 0 5px rgba(255, 255, 255, 0.95),
+        0  10px rgba(255, 255, 255, 0.8);
     margin-bottom: 9px;
+    text-align: center;
 }
 .card p{
-    color: #d50d0d;
+    color:#000;
     line-height: 1.5;
-    font-size: 16px;
-
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.9);
+    
 }
 .card .date-time {
       margin: 15px 0;
-      font-weight: bold;
-      color: #d81b60;
+      font-weight: 900;
+      font-size:larger;
+      color:#8B0000;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.9);
 }
 .card button {
     color:#acd81b;
@@ -42,10 +77,91 @@ body{
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    align: centre;
+    z-index: 2;
+    
 }
 .card button:hover {
       background: #ad1457;
       transform: scale(1.05);
       box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+.balloon-area {
+  position: absolute;
+  width: 100%;
+  bottom: 70px;
+  height: 100%;   
+  overflow: visible;
+}
+
+.ballon{
+    position: relative;
+    bottom: 0;
+    width: 60px;
+    height: 80px;
+    border-radius: 50%;
+    background:rgb(203, 14, 45);
+    animation: fly 6s linear infinite;
+    
+    
+
+}
+.ballon::after{
+    content:"";
+    width:2px;
+    height:40px;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:80px;
+    background: black;
+}
+.b1 {
+  left: 10%;
+  background: #ff6b6b;
+  animation-duration: 6s;
+}
+
+.b2 {
+  left: 30%;
+  background: #ffd93d;
+  animation-duration: 7s;
+}
+
+.b3 {
+  left: 60%;
+  background: #6bcbee;
+  animation-duration: 5.5s;
+}
+
+.b4 {
+  left: 85%;
+  background: #c77dff;
+  animation-duration: 8s;
+}
+
+@keyframes fly {
+    0%
+    {
+        bottom : -120px; 
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateX(-70px);
+
+    }
+    50% {
+        tramsform: translate(100px);
+        opacity: 0.9;
+    }
+    75%{
+        transform: translateX(-5px);
+
+    }
+    100% 
+    { 
+        bottom: 300px;
+        transform:  translateX(0);
+         opacity: 1; 
+        }
+
 }

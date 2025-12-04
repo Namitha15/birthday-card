@@ -9,16 +9,17 @@ body{
     margin: 1%
     
 }
+@media(max-width: 600px)
 .card {
     position: relative;
-    width: 400px;
-    padding: 20px;
+    width: 90%;
+    padding: 15px;
     border-radius: 20px;
     overflow: hidden;       /* IMPORTANT — keeps blur inside the card */
     background-color: rgba(255,255,255,0.4);
     backdrop-filter: blur(2px);
 }
-
+}
 
 
 .card::before {
@@ -165,3 +166,4 @@ body{
         }
 
 }
+
